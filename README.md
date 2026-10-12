@@ -5,17 +5,7 @@
 A VS Code-style markdown viewer for the terminal, with a vim-style editor you can open beside
 the preview. Built with [ratatui](https://ratatui.rs).
 
-```
-┌─ mdtui ─ README.md ──────────────────────────────── ● live ─┐
-│ OUTLINE        │ █ Project Title                          │
-│ ▾ Project      │ ══════════════════════════════           │
-│   ▾ Install    │ ☑ Parse GFM with comrak                  │
-│   ▾ Usage      │ ☐ Render mermaid    ← click / x toggles  │
-│                │ ┌ rust ─────────────────────── [copy] ┐  │
-│                │ │ fn main() { println!("hi"); }       │  │
-│                │ └─────────────────────────────────────┘  │
-│ VIEW  README.md        ¶ Project › Usage       42%  ln 88 │
-```
+![mdtui rendering examples/kitchen-sink.md](assets/demo.gif)
 
 ## Features
 
