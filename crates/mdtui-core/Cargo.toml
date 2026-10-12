@@ -1,0 +1,18 @@
+[package]
+name = "mdtui-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Markdown parsing, IR and terminal layout for mdtui"
+
+[dependencies]
+ratatui.workspace = true
+comrak.workspace = true
+syntect.workspace = true
+two-face.workspace = true
+unicode-width.workspace = true
+unicode-segmentation.workspace = true
+serde.workspace = true
+
+[dev-dependencies]
+insta.workspace = true

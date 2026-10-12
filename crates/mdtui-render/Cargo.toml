@@ -1,0 +1,16 @@
+[package]
+name = "mdtui-render"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "ratatui widgets, image and mermaid pipeline for mdtui"
+
+[dependencies]
+mdtui-core.workspace = true
+ratatui.workspace = true
+ratatui-image.workspace = true
+image.workspace = true
+resvg.workspace = true
+ureq.workspace = true
+directories.workspace = true
+unicode-width.workspace = true

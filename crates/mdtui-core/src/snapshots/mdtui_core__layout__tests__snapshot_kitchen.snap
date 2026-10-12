@@ -1,0 +1,32 @@
+---
+source: crates/mdtui-core/src/layout.rs
+expression: text
+---
+█ Title
+════════════════════════════════════════
+
+Some em and strong and code with a link.
+
+▎ ℹ Note
+▎ Alerts work.
+
+┌─────┬─────┐
+│ a   │   b │
+├─────┼─────┤
+│ 1   │  22 │
+└─────┴─────┘
+
+┌ rust ──────────────────────── [copy] ┐
+│ fn main() {}                         │
+└──────────────────────────────────────┘
+
+1. one
+2. two
+   ◦ nested
+
+────────────────────────────────────────
+
+Foot[1].
+
+────────────────────
+1. The note.

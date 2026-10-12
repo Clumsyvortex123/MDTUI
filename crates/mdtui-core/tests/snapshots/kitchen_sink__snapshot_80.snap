@@ -1,0 +1,217 @@
+---
+source: crates/mdtui-core/tests/kitchen_sink.rs
+expression: render(80).1
+---
+▸ front matter (2 lines)
+
+█ mdtui Kitchen Sink
+════════════════════════════════════════════════════════════════════════════════
+
+A fast terminal markdown viewer with vim keys, mouse support, no live reload,
+highlights, emoji shortcodes 🚀 ✨, and links. Jump to the tasks or open another
+file.
+
+▌ Contents
+────────────────────────────────────────────────────────────────────────────────
+
+• Text
+• Tasks
+• Code
+• Tables
+• Alerts
+• Images
+• Diagrams
+• Math
+
+▌ Text
+────────────────────────────────────────────────────────────────────────────────
+
+Paragraphs wrap to the window width. Soft line breaks join lines; a trailing
+backslash forces a hard
+break. Inline code, bold, italic, both, strike and autolinks like
+https://example.com all work. Footnotes too.[1]
+
+▎ Block quotes render with a bar.
+▎
+▎ ▎ And they nest.
+
+Lists
+
+1. First
+2. Second
+   ◦ nested bullet
+   ◦ another
+     ▪ third level
+3. Third
+
+Term
+  : Description lists are supported as well.
+
+▌ Tasks
+────────────────────────────────────────────────────────────────────────────────
+
+☑ Parse GFM with comrak
+☑ Render tables, alerts and footnotes
+☑ Render mermaid diagrams
+☐ Lua plugins
+  ☐ nested task
+    ☐ another task
+
+▌ Code
+────────────────────────────────────────────────────────────────────────────────
+
+┌ rust ──────────────────────────────────────────────────────────────── [copy] ┐
+│ use std::collections::HashMap;                                               │
+│                                                                              │
+│ /// Count words in a document.                                               │
+│ fn word_count(text: &str) -> HashMap<&str, usize> {                          │
+│     let mut counts = HashMap::new();                                         │
+│     for word in text.split_whitespace() {                                    │
+│         *counts.entry(word).or_insert(0) += 1;                               │
+│     }                                                                        │
+│     counts                                                                   │
+│ }                                                                            │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌ python ────────────────────────────────────────────────────────────── [copy] ┐
+│ def fib(n: int) -> int:                                                      │
+│     return n if n < 2 else fib(n - 1) + fib(n - 2)                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────── [copy] ┐
+│ plain fenced block with no language and a very long line that should wrap in │
+│ side the box rather than overflow the terminal width                         │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+▌ Tables
+────────────────────────────────────────────────────────────────────────────────
+
+┌──────────┬──────────┬───────┐
+│ Feature  │  Status  │ Score │
+├──────────┼──────────┼───────┤
+│ Markdown │   done   │    10 │
+│ Images   │   done   │     9 │
+│ Mermaid  │ via mmdc │     8 │
+│ Plugins  │ Lua 5.4  │     ∞ │
+└──────────┴──────────┴───────┘
+
+▌ Alerts
+────────────────────────────────────────────────────────────────────────────────
+
+▎ ℹ Note
+▎ Alerts render with an icon and a colour bar.
+
+▎ ✦ Tip
+▎ Press ? for help.
+
+▎ ‼ Important
+▎ Checkbox clicks write back to the file.
+
+▎ ▲ Warning
+▎ Mermaid needs mmdc (or mermaid-ascii) on your PATH.
+
+▎ ✖ Caution
+▎ Untrusted plugins can't run programs.
+
+▌ Images
+────────────────────────────────────────────────────────────────────────────────
+
+🖼 gradient (images disabled)
+
+🖼 logo (images disabled)
+🖼 missing image (images disabled)
+
+🖼 html image (images disabled)
+
+▌ Diagrams
+────────────────────────────────────────────────────────────────────────────────
+
+⚠ mermaid: images disabled
+┌ mermaid ───────────────────────────────────────────────────────────── [copy] ┐
+│ flowchart LR                                                                 │
+│     A[Markdown] --> B(comrak AST)                                            │
+│     B --> C{IR}                                                              │
+│     C --> D[Layout]                                                          │
+│     D --> E[ratatui]                                                         │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+⚠ mermaid: images disabled
+┌ mermaid ───────────────────────────────────────────────────────────── [copy] ┐
+│ sequenceDiagram                                                              │
+│     participant U as User                                                    │
+│     participant M as mdtui                                                   │
+│     U->>M: open README.md                                                    │
+│     M-->>U: rendered preview                                                 │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+⚠ mermaid: images disabled
+┌ mermaid ───────────────────────────────────────────────────────────── [copy] ┐
+│ sequenceDiagram                                                              │
+│     participant web as Web Browser                                           │
+│     participant blog as Blog Service                                         │
+│     participant account as Account Service                                   │
+│     participant mail as Mail Service                                         │
+│     participant db as Storage                                                │
+│ Note over web,db: The user must be logged in to submit blog posts            │
+│     web->>+account: Logs in using credentials                                │
+│     account->>db: Query stored accounts                                      │
+│     db->>account: Respond with query result                                  │
+│ alt Credentials not found                                                    │
+│         account->>web: Invalid credentials                                   │
+│     else Credentials found                                                   │
+│         account->>-web: Successfully logged in                               │
+│ Note over web,db: When the user is authenticated, they can now submit new po │
+│ sts                                                                          │
+│         web->>+blog: Submit new post                                         │
+│         blog->>db: Store post data                                           │
+│ par Notifications                                                            │
+│             blog--)mail: Send mail to blog subscribers                       │
+│             blog--)db: Store in-site notifications                           │
+│         and Response                                                         │
+│             blog-->>-web: Successfully posted                                │
+│         end                                                                  │
+│     end                                                                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+⚠ mermaid: images disabled
+┌ mermaid ───────────────────────────────────────────────────────────── [copy] ┐
+│ flowchart TD                                                                 │
+│     A[Open file] --> B{Changed on disk?}                                     │
+│     B -->|Yes| C[Re-render]                                                  │
+│     B -->|No| D([Idle])                                                      │
+│     C --> E[(Cache)]                                                         │
+│     D -.-> B                                                                 │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+⚠ mermaid: images disabled
+┌ mermaid ───────────────────────────────────────────────────────────── [copy] ┐
+│ stateDiagram-v2                                                              │
+│     [*] --> Viewing                                                          │
+│     Viewing --> Editing : e                                                  │
+│     Editing --> Viewing : :w                                                 │
+│     Editing --> [*] : :q!                                                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+⚠ mermaid: images disabled
+┌ mermaid ───────────────────────────────────────────────────────────── [copy] ┐
+│ pie title Where the time goes                                                │
+│     "Layout" : 45                                                            │
+│     "Images" : 30                                                            │
+│     "Diagrams" : 25                                                          │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+▌ Math
+────────────────────────────────────────────────────────────────────────────────
+
+Inline math like e^(iπ) + 1 = 0 and α² + β₁ ≤ ∞.
+
+                              ∑ᵢ₌₁ⁿ i = (n(n+1))/2
+
+────────────────────────────────────────────────────────────────────────────────
+
+HTML details
+
+Raw HTML is shown as text.
+
+────────────────────
+1. Layout is cached per width; images decode on worker threads.

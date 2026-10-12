@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="100" viewBox="0 0 320 100">
+  <rect x="2" y="2" width="316" height="96" rx="16" fill="#1e1e1e" stroke="#007acc" stroke-width="4"/>
+  <circle cx="50" cy="50" r="28" fill="#4ec9b0"/>
+  <text x="95" y="62" font-family="sans-serif" font-size="36" fill="#d4d4d4">mdtui</text>
+</svg>

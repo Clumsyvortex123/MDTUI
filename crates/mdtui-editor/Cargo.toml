@@ -1,0 +1,16 @@
+[package]
+name = "mdtui-editor"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "vim-style markdown editor pane with completion and LSP for mdtui"
+
+[dependencies]
+mdtui-core.workspace = true
+ratatui.workspace = true
+edtui.workspace = true
+emojis.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+unicode-width.workspace = true
+syntect.workspace = true

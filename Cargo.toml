@@ -1,0 +1,43 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+mdtui-core = { path = "crates/mdtui-core" }
+mdtui-render = { path = "crates/mdtui-render" }
+mdtui-plugin = { path = "crates/mdtui-plugin" }
+mdtui-editor = { path = "crates/mdtui-editor" }
+
+ratatui = "0.30"
+crossterm = "0.29"
+comrak = { version = "0.56", default-features = false, features = ["shortcodes"] }
+emojis = "0.9"
+syntect = "5"
+two-face = "0.5"
+unicode-width = "0.2"
+unicode-segmentation = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+image = "0.25"
+ratatui-image = { version = "11", default-features = false, features = ["image-defaults", "crossterm"] }
+resvg = "0.45"
+ureq = "3"
+mlua = { version = "0.12", features = ["lua54", "vendored", "serialize"] }
+edtui = "0.11"
+notify = "8"
+toml = "0.9"
+directories = "6"
+clap = { version = "4", features = ["derive"] }
+base64 = "0.22"
+open = "5"
+anyhow = "1"
+insta = "1"
+
+[profile.release]
+lto = "thin"
+strip = true
